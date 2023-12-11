@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mealtime</title>
+    <link rel="icon" href="Logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="Logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                Mealtime
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Recipes.html">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Cooking Tips and Techniques.html">Cooking Tips and Techniques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact Us.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Cooking Equipment And Accessories.html">Cooking Equipment and Accessories</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <div class="input-group align-items-center">
+                        <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-secondary bg-primary border-start border rounded-pill ms-n3" type="submit">
+                            <i class="fas fa-search"></i> 
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+       <!-- Recipe results section -->
+       <div class="container my-5">
+        <h2>Available Recipes</h2>
+        <div class="row" id="recipeResults"></div>
+    </div>
+
+    <!-- Bootstrap JavaScript Bundle (Popper included) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <script>
+        // Function to fetch recipes from SERPAPI
+        function fetchRecipes() {
+            const API_KEY = '2d405ce78c00eda45dda4ba85fddd8febba788fecf38f42e3c1b5476e325a079';
+            const searchEngine = 'google';  
+            const searchType = 'recipes'; 
+
+            const apiUrl = `https://serpapi.com/search.json?engine=${searchEngine}&q=recipes&api_key=${API_KEY}&tbm=${searchType}`;
+
+            // Perform a fetch request to SERPAPI
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Extract and display the fetched recipes
+                    const recipes = data?.recipes || [];
+                    displayRecipes(recipes);
+                })
+                .catch(error => {
+                    console.error('Error fetching recipes:', error);
+                });
+        }
+
+        // Function to display recipes using a grid system
+        function displayRecipes(recipes) {
+            const recipeResultsContainer = document.getElementById('recipeResults');
+
+            if (recipes && recipes.length > 0) {
+                recipes.forEach(recipe => {
+                    const col = document.createElement('div');
+                    col.classList.add('col-md-4', 'mb-4');
+
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+
+                    const cardImg = document.createElement('img');
+                    cardImg.src = recipe.thumbnail || 'https://via.placeholder.com/300'; // Use a placeholder image if thumbnail is not available
+                    cardImg.classList.add('card-img-top');
+
+                    const cardBody = document.createElement('div');
+                    cardBody.classList.add('card-body');
+
+                    const cardTitle = document.createElement('h5');
+                    cardTitle.classList.add('card-title');
+                    cardTitle.textContent = recipe.title || 'No title available';
+
+                    cardBody.appendChild(cardTitle);
+                    card.appendChild(cardImg);
+                    card.appendChild(cardBody);
+                    col.appendChild(card);
+                    recipeResultsContainer.appendChild(col);
+                });
+            } else {
+                recipeResultsContainer.textContent = 'No recipes found.';
+            }
+        }
+
+        // Call the function to fetch and display recipes when the page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            fetchRecipes();
+        });
+    </script>
+</body>
+
+</html>
