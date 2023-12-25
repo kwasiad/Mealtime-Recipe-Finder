@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Mealtime</title>
-    <link rel="icon" href="Logo.png" type="image/x-icon" />
+    <title>Mealtime-Home</title>
+    <link rel="icon" href="Logo_New.svg" type="image/x-icon" />
     <link rel="stylesheet" href="main.css" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CDN for icons -->
@@ -14,18 +14,23 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="Logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="Logo_New.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
                 Mealtime
             </a>
+
+            <!-- Toggler/collapsible button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Recipes.html">Recipes</a>
@@ -40,21 +45,57 @@
                         <a class="nav-link" href="Cooking Equipment And Accessories.html">Cooking Equipment and Accessories</a>
                     </li>
                 </ul>
+
+                <!-- Search form -->
                 <form class="d-flex">
                     <div class="input-group align-items-center">
-                        <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-secondary bg-primary border-start border rounded-pill ms-n3" type="submit">
-                            <i class="fas fa-search"></i> 
+                        <input class="form-control border-end-0 border rounded-pill" type="search" id="search"
+                            placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-secondary bg-primary border-start border rounded-pill ms-n3"
+                            type="submit">
+                            <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </form>
             </div>
         </div>
     </nav>
-       <!-- Recipe results section -->
-       <div class="container my-5">
-        <h2>Available Recipes</h2>
-        <div class="row" id="recipeResults"></div>
+     
+   <!-- -->
+    <div class="container mt-3">
+        <h2>Cooking Classes In Chicago</h2>
+
+        <div class="row">
+            <!-- First Row -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow">
+                    <img src="Eataly.jpg" class="card-img-top" alt="Eataly">
+                    <div class="card-body">
+                        <h5 class="card-title">Italian Cooking Class</h5>
+                        <a href="https://www.eataly.com/us_en/classes-and-events/chicago" class="btn btn-primary" target="_blank">Discover More </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow">
+                    <img src="Sur La Table.jpg" class="card-img-top" alt="surlatable">
+                    <div class="card-body">
+                        <h5 class="card-title">Sur La Table Cooking Class</h5>
+                        <a href="https://www.surlatable.com/cooking-classes/in-store-cooking-classes/" class="btn btn-primary" target="_blank"> Discover More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow">
+                    <img src="Betties.jpg" class="card-img-top" alt="Betties">
+                    <div class="card-body">
+                        <h5 class="card-title">Betties Chicago Cooking Class</h5>
+                        <a href="https://bettieschicago.com/events/" class="btn btn-primary" target="_blank">Discover More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
     <!-- Bootstrap JavaScript Bundle (Popper included) -->
@@ -62,67 +103,45 @@
     <!-- Font Awesome script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 
-    <script>
-        // Function to fetch recipes from SERPAPI
-        function fetchRecipes() {
-            const API_KEY = '2d405ce78c00eda45dda4ba85fddd8febba788fecf38f42e3c1b5476e325a079';
-            const searchEngine = 'google';  
-            const searchType = 'recipes'; 
-
-            const apiUrl = `https://serpapi.com/search.json?engine=${searchEngine}&q=recipes&api_key=${API_KEY}&tbm=${searchType}`;
-
-            // Perform a fetch request to SERPAPI
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    // Extract and display the fetched recipes
-                    const recipes = data?.recipes || [];
-                    displayRecipes(recipes);
-                })
-                .catch(error => {
-                    console.error('Error fetching recipes:', error);
+    <!-- <script>
+        async function searchRecipes() {
+            const searchInput = document.getElementById('search').value;
+            const appId = 'b13711f2';
+            const appKey = '07ef041dd90f900a76266cc2738bda5b';
+            const apiUrl = `https://api.edamam.com/search?q=${searchInput}&app_id=${appId}&app_key=${appKey}`;
+    
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+    
+                // Process data and display results
+                const recipesContainer = document.getElementById('recipeResults');
+                recipesContainer.innerHTML = ''; // Clear previous results
+    
+                data.hits.forEach(hit => {
+                    const recipe = hit.recipe;
+                    const recipeCard = `
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img src="${recipe.image}" class="card-img-top" alt="${recipe.label}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${recipe.label}</h5>
+                                    <p class="card-text">Calories: ${Math.round(recipe.calories)}</p>
+                                    <a href="${recipe.url}" class="btn btn-primary">View Recipe</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    recipesContainer.innerHTML += recipeCard;
                 });
-        }
-
-        // Function to display recipes using a grid system
-        function displayRecipes(recipes) {
-            const recipeResultsContainer = document.getElementById('recipeResults');
-
-            if (recipes && recipes.length > 0) {
-                recipes.forEach(recipe => {
-                    const col = document.createElement('div');
-                    col.classList.add('col-md-4', 'mb-4');
-
-                    const card = document.createElement('div');
-                    card.classList.add('card');
-
-                    const cardImg = document.createElement('img');
-                    cardImg.src = recipe.thumbnail || 'https://via.placeholder.com/300'; // Use a placeholder image if thumbnail is not available
-                    cardImg.classList.add('card-img-top');
-
-                    const cardBody = document.createElement('div');
-                    cardBody.classList.add('card-body');
-
-                    const cardTitle = document.createElement('h5');
-                    cardTitle.classList.add('card-title');
-                    cardTitle.textContent = recipe.title || 'No title available';
-
-                    cardBody.appendChild(cardTitle);
-                    card.appendChild(cardImg);
-                    card.appendChild(cardBody);
-                    col.appendChild(card);
-                    recipeResultsContainer.appendChild(col);
-                });
-            } else {
-                recipeResultsContainer.textContent = 'No recipes found.';
+            } catch (error) {
+                console.error('Error fetching data:', error);
             }
+    
+            return false; // Prevent form submission
         }
-
-        // Call the function to fetch and display recipes when the page loads
-        document.addEventListener('DOMContentLoaded', function () {
-            fetchRecipes();
-        });
     </script>
+-->
 </body>
 
 </html>
