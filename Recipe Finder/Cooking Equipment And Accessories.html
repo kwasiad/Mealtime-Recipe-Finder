@@ -2,28 +2,35 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Cooking Equipment and Accessories - Mealtime</title>
-    <link rel="icon" href="Logo.png" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <title>Cooking Equipment and Accessories</title>
+    <link rel="icon" href="Logo_New.svg" type="image/x-icon" />
     <link rel="stylesheet" href="main.css" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="Logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top" />
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="Logo_New.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
                 Mealtime
-            </a>
+            </a> 
+            
+            <!-- Toggler/collapsible button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
+            <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Recipes.html">Recipes</a>
@@ -38,67 +45,88 @@
                         <a class="nav-link" href="Cooking Equipment And Accessories.html">Cooking Equipment and Accessories</a>
                     </li>
                 </ul>
-                <form class="d-flex ms-auto" role="search">
-                    <input class="form-control me-2" type="search" placeholder="search for recipes" aria-label="Search" />
-                    <button class="btn btn-sm " type="submit">
-                        Search
-                    </button>
+                
+                <!-- Search form -->
+                <form class="d-flex">
+                    <div class="input-group align-items-center">
+                        <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-secondary bg-primary border-start border rounded-pill ms-n3" type="submit">
+                            <i class="fas fa-search"></i> 
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </nav>
-
     <div class="container mt-5">
         <h1>Cooking Equipment and Accessories</h1>
         <p>Explore our collection of high-quality cooking equipment and accessories. Find the perfect tools and gadgets to enhance your cooking experience, whether you're a pro or a home cook.</p>
         <div class="row row-cols-3 row-cols-md-3 g-4">
             <!-- First Row -->
-            <div class="col">
+            <div class="g-col-6 g-col-md-4">
                 <div class="card">
-                    <img src="Images/Cookware.jpg" class="card-img-top" alt="Cookware">
+                    <img src="Images/Cookware.jpg" class="card-img-top rounded float-start" alt="Cookware">
                     <div class="card-body">
-                        <a href="https://www.wayfair.com/kitchen-tabletop/sb0/cookware-sets-c417496.html" class="btn btn-primary">Click To View and Buy</a>
+                        <a href="https://www.wayfair.com/kitchen-tabletop/sb0/cookware-sets-c417496.html" target="_blank" class="btn btn-primary stretched-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            Cookware
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="g-col-6 g-col-md-4">
                 <div class="card">
-                    <img src="Images/Measuring Spoons and Cups.jpg" class="card-img-top" alt="Measuring Spoons and Cups">
+                    <img src="Images/Measuring Spoons and Cups.jpg" class="card-img-top rounded float-start" alt="Measuring Spoons and Cups">
                     <div class="card-body">
-                        <a href="https://www.wayfair.com/kitchen-tabletop/sb0/measuring-cups-spoons-c419575.html" class="btn btn-primary">Click To View and Buy</a>
+                        <a href="https://www.wayfair.com/kitchen-tabletop/sb0/measuring-cups-spoons-c419575.html" target="_blank" class="btn btn-primary stretched-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            Measuring Spoons and Cups
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="g-col-6 g-col-md-4">
                 <div class="card">
-                    <img src="Images/Stand Mixer.jpg" class="card-img-top" alt="Stand Mixer">
+                    <img src="Images/Stand Mixer.jpg" class="card-img-top rounded float-start" alt="Stand Mixer">
                     <div class="card-body">
-                        <a href="https://www.wayfair.com/kitchen-tabletop/sb0/mixers-attachments-c419244.html?prefetch=true" class="btn btn-primary">Click To View and Buy</a>
+                        <a href="https://www.wayfair.com/kitchen-tabletop/sb0/mixers-attachments-c419244.html?prefetch=true" target="_blank" class="btn btn-primary stretched-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            Stand Mixer
+                        </a>
                     </div>
                 </div>
             </div>
               <!-- Second Row -->
-            <div class="col">
+            <div class="g-col-6 g-col-md-4">
                 <div class="card">
-                    <img src="Images/Air Fryer.jpg" class="card-img-top" alt="Air Fryers">
+                    <img src="Images/Air Fryer.jpg" class="card-img-top rounded float-start" alt="Air Fryers">
                     <div class="card-body">
-                        <a href="https://www.wayfair.com/shop-product-type/sb0/air-fryers-c419275.html?prefetch=true" class="btn btn-primary">Click To View and Buy</a>
+                        <a href="https://www.wayfair.com/shop-product-type/sb0/air-fryers-c419275.html?prefetch=true" target="_blank" class="btn btn-primary stretched-link">
+                         <i class="fas fa-shopping-cart"></i>
+                            Air Fryer
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="g-col-6 g-col-md-4">
                 <div class="card">
-                    <img src="Images/Napkins.jpg" class="card-img-top" alt="Napkins">
+                    <img src="Images/Napkins.jpg" class="card-img-top rounded float-start" alt="Napkins">
                     <div class="card-body">
-                        <a href="https://www.wayfair.com/kitchen-tabletop/sb0/cloth-napkins-c418950.html" class="btn btn-primary">Click To View and Buy</a>
+                        <a href="https://www.wayfair.com/kitchen-tabletop/sb0/cloth-napkins-c418950.html" target="_blank" class="btn btn-primary stretched-link">    
+                            <i class="fas fa-shopping-cart"></i>
+                            Napkins
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="g-col-6 g-col-md-4">
                 <div class="card">
-                    <img src="Images/blender.jpg" class="card-img-top" alt="Blenders">
+                    <img src="Images/blender.jpg" class="card-img-top rounded float-start" alt="Blenders">
                     <div class="card-body">
-                        <a href="https://www.wayfair.com/kitchen-tabletop/sb0/blenders-c419247.html" class="btn btn-primary">Click To View and Buy</a>
+                        <a href="https://www.wayfair.com/kitchen-tabletop/sb0/blenders-c419247.html" target="_blank" class="btn btn-primary stretched-link">
+                             <i class="fas fa-shopping-cart"></i>
+                             Blenders
+                        </a>
                     </div>
                 </div>
             </div>
@@ -107,37 +135,42 @@
     <div class="mt-5">
         <h2> For Additional Options to Buy Cooking Equipment and Accessories:</h2>
         <div class="row row-cols-3 row-cols-md-3 g-4">
-            <div class="col">
+            <div class="g-col-6 g-col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <img src="Amazon-Logo.png" class="card-img-top small-img" alt="Amazon.com">
+                        <i class="fab fa-amazon card-img-top small-img rounded float-start" style="font-size: 48px; color: #000000;"></i>
                         <p class="card-text">Shop for More Kitchen Equipment and Accessories at Amazon.com</p>
-                        <a href="https://www.amazon.com/gp/browse.html?node=284507&ref_=nav_em__ki_0_2_19_8" class="btn btn-primary">Shop On Amazon</a>
+                        <a href="https://www.amazon.com/gp/browse.html?node=284507&ref_=nav_em__ki_0_2_19_8" target="_blank" class="btn btn-dark stretched-link">
+                            <i class="fab fa-amazon fa-lg"></i> Amazon
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="g-col-6 g-col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <img src="Etsy-logo.png" class="card-img-top small-img" alt="Esty">
-                        <p class="card-text">Shop for More Kitchen Equipment and Accessories at Esty</p>
-                        <a href="https://www.etsy.com/c/home-and-living/kitchen-and-dining?ordering_strategy_key=Search2_CategoryPages_TaxonomyOrdering_Gms&explicit=1&ref=catcard-1031-291475871" class="btn btn-primary">Shop On Esty</a>
+                        <i class="fab fa-ebay card-img-top small-img rounded float-start" style="font-size: 48px; color: #0064D2;"></i>
+                        <p class="card-text">Shop for More Kitchen Equipment and Accessories at Ebay</p>
+                        <a href="https://www.ebay.com/b/Kitchen-Dining-Bar-Supplies/20625/bn_1865564" target="_blank" class="btn btn-primary stretched-link">
+                            <i class="fab fa-ebay fa-lg"></i> Ebay
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="g-col-6 g-col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <img src="Wayfair-Logo.png" class="card-img-top small-img" alt="Wayfair">
+                        <i class="fab fa-wikipedia-w card-img-top small-img rounded float-start" style="font-size: 48px; color: #A020F0;"></i>
                         <p class="card-text">Shop for More Kitchen Equipment and Accessories at Wayfair</p>
-                        <a href="https://www.wayfair.com/kitchen-tabletop/cat/kitchen-tabletop-c45667.html" class="btn btn-primary">Shop On Wayfair</a>
+                        <a href="https://www.wayfair.com/kitchen-tabletop/cat/kitchen-tabletop-c45667.html" target="_blank" class="btn btn-secondary stretched-link">
+                            <i class="fab fa-wikipedia-w fa-lg"></i> Wayfair
+                        </a>
                     </div>
                 </div>
             </div>
-           
         </div>
     </div>
-</div>
+
     <!-- Bootstrap JavaScript Bundle (Popper included) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
